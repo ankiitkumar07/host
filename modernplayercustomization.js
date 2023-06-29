@@ -15,7 +15,7 @@
 		},
 		false
 	);
-	function extractInteractions(): void {
+	function extractInteractions() {
 		const iframeWindow = this.iframe.nativeElement.contentWindow;
 		console.log(this.iframe, iframeWindow);
 		if (iframeWindow && iframeWindow.API) {
