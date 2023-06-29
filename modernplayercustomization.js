@@ -1,1 +1,1 @@
-(function (window){window.addEventListener("message", function(evet){console.log("iframe getting message");window.Control.TriggerLegacyReturnToLMS()}, false); rscpCustomizationCompleted()})(window);
+(function (window){window.addEventListener("message", function(evet){console.log("iframe getting message");console.log("new version taking place");window.Control.TriggerLegacyReturnToLMS()}, false); rscpCustomizationCompleted()})(window);
