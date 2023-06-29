@@ -12,13 +12,7 @@
 		false
 	);
 	function extractInteractions() {
-		const iframeWindow =
-			document.getElementsByTagName("iframe")[0].contentWindow;
-		console.log(
-			document.getElementsByTagName("iframe")[0],
-			iframeWindow,
-			iframeWindow.cmi5
-		);
+		console.log(window.Control);
 		if (iframeWindow && iframeWindow.API) {
 			const interactionCount = iframeWindow.API.GetValue(
 				"cmi.interactions._count"
