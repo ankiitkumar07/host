@@ -17,8 +17,7 @@
 		console.log(
 			document.getElementsByTagName("iframe")[0],
 			iframeWindow,
-			iframeWindow.Cmi5,
-			iframeWindow.Cmi5()
+			iframeWindow.Cmi5
 		);
 		if (iframeWindow && iframeWindow.API) {
 			const interactionCount = iframeWindow.API.GetValue(
