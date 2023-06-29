@@ -11,18 +11,15 @@
 		},
 		false
 	);
-	window.addEventListener(
-		"checkingProgress",
-		() => {
-			console.log("Getting checkProgess Message");
-			extractInteractions();
-		},
-		false
-	);
 	function extractInteractions() {
 		const iframeWindow =
 			document.getElementsByTagName("iframe")[0].contentWindow;
-		console.log(document.getElementsByTagName("iframe")[0], iframeWindow);
+		console.log(
+			document.getElementsByTagName("iframe")[0],
+			iframeWindow,
+			iframeWindow.Cmi5,
+			iframeWindow.Cmi5()
+		);
 		if (iframeWindow && iframeWindow.API) {
 			const interactionCount = iframeWindow.API.GetValue(
 				"cmi.interactions._count"
