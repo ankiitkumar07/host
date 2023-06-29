@@ -2,7 +2,7 @@
 	window.addEventListener(
 		"message",
 		function (evet) {
-			console.log("iframe getting message, new changes");
+			console.log("iframe getting message, new changes", evet);
 			window.Control.TriggerLegacyReturnToLMS();
 		},
 		false
