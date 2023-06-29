@@ -3,15 +3,11 @@
 		"message",
 		function (evet) {
 			console.log("iframe getting message, new changes", evet);
-			window.Control.TriggerLegacyReturnToLMS();
-		},
-		false
-	);
-	window.addEventListener(
-		"checkingProgress",
-		() => {
-			console.log("Getting checkProgess Message")
-			extractInteractions();
+			if (evet.data && evet.data == "checkingProgress") {
+				extractInteractions();
+			} else {
+				window.Control.TriggerLegacyReturnToLMS();
+			}
 		},
 		false
 	);
