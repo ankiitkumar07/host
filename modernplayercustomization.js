@@ -77,14 +77,21 @@
 				console.log("Result:", result);
 			}
 			console.log("ReturnObject:", returnObject);
+			console.log("windows:", parent, event);
 
-			parent.postMessage({
-				returnObject: JSON.stringify(returnObject),
-			});
+			parent.postMessage(
+				{
+					returnObject: JSON.stringify(returnObject),
+				},
+				"*"
+			);
 			sessionStorage.setItem("progress", JSON.stringify(returnObject));
-			event.source.postMessage({
-				returnObject: JSON.stringify(returnObject),
-			});
+			event.source.postMessage(
+				{
+					returnObject: JSON.stringify(returnObject),
+				},
+				"*"
+			);
 		}
 	}
 	rscpCustomizationCompleted();
