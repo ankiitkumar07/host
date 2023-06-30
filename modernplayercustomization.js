@@ -4,14 +4,14 @@
 		function (evet) {
 			console.log("iframe getting message, new changes", evet);
 			if (evet.data && evet.data == "checkingProgress") {
-				extractInteractions();
+				extractInteractions(evet);
 			} else {
 				window.Control.TriggerLegacyReturnToLMS();
 			}
 		},
 		false
 	);
-	function extractInteractions() {
+	function extractInteractions(event) {
 		console.log(
 			"cmi.interactions._count",
 			window.Control.Api.GetValue("cmi.interactions._count"),
@@ -82,6 +82,9 @@
 				returnObject: JSON.stringify(returnObject),
 			});
 			sessionStorage.setItem("progress", JSON.stringify(returnObject));
+			event.sourse.postMessage({
+				returnObject: JSON.stringify(returnObject),
+			});
 		}
 	}
 	rscpCustomizationCompleted();
