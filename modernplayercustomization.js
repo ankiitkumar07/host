@@ -78,7 +78,7 @@
 			}
 			console.log("ReturnObject:", returnObject);
 
-			window.postMessage({
+			parent.postMessage({
 				returnObject: JSON.stringify(returnObject),
 			});
 		}
