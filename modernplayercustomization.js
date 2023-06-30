@@ -78,7 +78,7 @@
 			}
 			console.log("ReturnObject:", returnObject);
 
-			window.top.postMessage({
+			window.postMessage({
 				returnObject: JSON.stringify(returnObject),
 			});
 		}
