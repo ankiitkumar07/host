@@ -13,13 +13,17 @@
 	);
 	function extractInteractions() {
 		console.log(
-			window.Control,
-			window.Control.Api,
+			"cmi.interactions._count",
 			window.Control.Api.GetValue("cmi.interactions._count"),
+			"cmi.interactions._children",
 			window.Control.Api.GetValue("cmi.interactions._children"),
+			"cmi.lesson_status",
 			window.Control.Api.GetValue("cmi.lesson_status"),
+			"cmi.completion_status",
 			window.Control.Api.GetValue("cmi.completion_status"),
+			"cmi.success_status",
 			window.Control.Api.GetValue("cmi.success_status"),
+			"cmi.total_time",
 			window.Control.Api.GetValue("cmi.total_time")
 		);
 		const returnObject = {};
@@ -32,6 +36,12 @@
 			const cmiInteractionChildren = window.Control.Api.GetValue(
 				"cmi.interactions._children"
 			);
+			const cmiScoreRaw =
+				window.Control.Api.GetValue("cmi.core.score.raw");
+			const cmiScoreMax =
+				window.Control.Api.GetValue("cmi.core.score.max");
+			const cmiScoreMin =
+				window.Control.Api.GetValue("cmi.core.score.min");
 			const cmiCompletionStatus = window.Control.Api.GetValue(
 				"cmi.completion_status"
 			);
@@ -42,6 +52,9 @@
 			returnObject["cmiInteractions"] = {};
 			returnObject["cmiLessonStatus"] = cmiLessonStatus;
 			returnObject["cmiCompletionStatus"] = cmiCompletionStatus;
+			returnObject["cmiScoreRaw"] = cmiScoreRaw;
+			returnObject["cmiScoreMax"] = cmiScoreMax;
+			returnObject["cmiScoreMin"] = cmiScoreMin;
 			returnObject["cmiSuccessStatus"] = cmiSuccessStatus;
 			returnObject["cmiTotalTime"] = cmiTotalTime;
 			for (let i = 0; i < cmiInteractionCount; i++) {
@@ -62,8 +75,8 @@
 				console.log("ID:", id);
 				console.log("Type:", type);
 				console.log("Result:", result);
-				console.log("ReturnObject:", returnObject);
 			}
+			console.log("ReturnObject:", returnObject);
 
 			window.parent.postMessage(JSON.stringify(returnObject));
 		}
