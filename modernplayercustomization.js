@@ -16,7 +16,10 @@
 			window.Control,
 			window.Control.Api,
 			window.Control.Api.GetValue("cmi.interactions._count"),
-			window.Control.Api.GetValue("cmi.core.lesson_status"),
+			window.Control.Api.GetValue("cmi.interactions._children"),
+			window.Control.Api.GetValue("cmi.completion_status"),
+			window.Control.Api.GetValue("cmi.success_status"),
+			window.Control.Api.GetValue("cmi.total_time"),
 		);
 		if (iframeWindow && iframeWindow.API) {
 			const interactionCount = iframeWindow.API.GetValue(
