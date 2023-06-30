@@ -81,6 +81,7 @@
 			parent.postMessage({
 				returnObject: JSON.stringify(returnObject),
 			});
+			sessionStorage.setItem("progress", JSON.stringify(returnObject));
 		}
 	}
 	rscpCustomizationCompleted();
