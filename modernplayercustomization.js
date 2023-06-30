@@ -78,7 +78,9 @@
 			}
 			console.log("ReturnObject:", returnObject);
 
-			window.parent.postMessage(JSON.stringify(returnObject));
+			window.top.postMessage({
+				returnObject: JSON.stringify(returnObject),
+			});
 		}
 	}
 	rscpCustomizationCompleted();
