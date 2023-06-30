@@ -15,7 +15,11 @@
 		console.log(
 			window.Control,
 			window.Control.Api,
-			window.Control.PrepareResultsPayload()
+			window.Control.PrepareResultsPayload(),
+			window.Control.GetValue("cmi.interactions._count"),
+			window.Control.Api.GetValue("cmi.core.lesson_status"),
+			window.Control.LMSGetValue("cmi.interactions._count"),
+			window.Control.Api.LMSGetValue("cmi.core.lesson_status")
 		);
 		if (iframeWindow && iframeWindow.API) {
 			const interactionCount = iframeWindow.API.GetValue(
