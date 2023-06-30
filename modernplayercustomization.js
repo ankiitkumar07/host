@@ -17,44 +17,55 @@
 			window.Control.Api,
 			window.Control.Api.GetValue("cmi.interactions._count"),
 			window.Control.Api.GetValue("cmi.interactions._children"),
+			window.Control.Api.GetValue("cmi.lesson_status"),
 			window.Control.Api.GetValue("cmi.completion_status"),
 			window.Control.Api.GetValue("cmi.success_status"),
-			window.Control.Api.GetValue("cmi.total_time"),
+			window.Control.Api.GetValue("cmi.total_time")
 		);
-		if (iframeWindow && iframeWindow.API) {
-			const interactionCount = iframeWindow.API.GetValue(
+		const returnObject = {};
+		if (window.Control && window.Control.Api) {
+			const cmiInteractionCount = window.Control.Api.GetValue(
 				"cmi.interactions._count"
 			);
-			const courseProgress = iframeWindow.API.GetValue(
-				"cmi.core.lesson_status"
+			const cmiLessonStatus =
+				window.Control.Api.GetValue("cmi.lesson_status");
+			const cmiInteractionChildren = window.Control.Api.GetValue(
+				"cmi.interactions._children"
 			);
-			const _courseProgress = iframeWindow.API.LMSGetValue(
-				"cmi.core.lesson_status"
+			const cmiCompletionStatus = window.Control.Api.GetValue(
+				"cmi.completion_status"
 			);
-			for (let i = 0; i < interactionCount; i++) {
+			const cmiSuccessStatus =
+				window.Control.Api.GetValue("cmi.success_status");
+			const cmiTotalTime = window.Control.Api.GetValue("cmi.total_time");
+
+			returnObject["cmiInteractions"] = {};
+			returnObject["cmiLessonStatus"] = cmiLessonStatus;
+			returnObject["cmiCompletionStatus"] = cmiCompletionStatus;
+			returnObject["cmiSuccessStatus"] = cmiSuccessStatus;
+			returnObject["cmiTotalTime"] = cmiTotalTime;
+			for (let i = 0; i < cmiInteractionCount; i++) {
 				const interactionId = "cmi.interactions." + i + ".id";
 				const interactionType = "cmi.interactions." + i + ".type";
 				const interactionResult = "cmi.interactions." + i + ".result";
 
-				const id = iframeWindow.API.GetValue(interactionId);
-				const type = iframeWindow.API.GetValue(interactionType);
-				const result = iframeWindow.API.GetValue(interactionResult);
-				const _id = iframeWindow.API.LMSGetValue(interactionId);
-				const _type = iframeWindow.API.LMSGetValue(interactionType);
-				const _result = iframeWindow.API.LMSGetValue(interactionResult);
+				const id = window.Control.Api.GetValue(interactionId);
+				const type = window.Control.Api.GetValue(interactionType);
+				const result = window.Control.Api.GetValue(interactionResult);
+				returnObject["cmiInteractions"][i] = {
+					interactionId: id,
+					interactionType: type,
+					interactionResult: result,
+				};
 
 				console.log("Interaction " + (i + 1) + ":");
 				console.log("ID:", id);
 				console.log("Type:", type);
 				console.log("Result:", result);
-				console.log("Interaction " + (i + 1) + ":");
-				console.log("LMS FUNCTION ID:", _id);
-				console.log("LMS FUNCTION Type:", _type);
-				console.log("LMS FUNCTION Result:", _result);
+				console.log("ReturnObject:", returnObject);
 			}
-			console.log("Others");
-			console.log("CourseProgress:", courseProgress);
-			console.log("LMS FUNCTION CP:", _courseProgress);
+
+			window.parent.postMessage(JSON.stringify(returnObject));
 		}
 	}
 	rscpCustomizationCompleted();
