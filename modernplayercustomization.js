@@ -83,15 +83,15 @@
 				{
 					returnObject: JSON.stringify(returnObject),
 				},
-				"*"
+				event.origin
 			);
-			sessionStorage.setItem("progress", JSON.stringify(returnObject));
-			event.source.postMessage(
-				{
-					returnObject: JSON.stringify(returnObject),
-				},
-				"*"
-			);
+			// sessionStorage.setItem("progress", JSON.stringify(returnObject));
+			// event.source.postMessage(
+			// 	{
+			// 		returnObject: JSON.stringify(returnObject),
+			// 	},
+			// 	event.origin
+			// );
 		}
 	}
 	rscpCustomizationCompleted();
