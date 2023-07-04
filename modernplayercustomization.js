@@ -12,7 +12,11 @@
 		false
 	);
 	function extractInteractions(event) {
-		if (window.Control && window.Control.Api) {
+		if (
+			window.Control &&
+			window.Control.Api &&
+			window.Control.Api.GetValue
+		) {
 			console.log(
 				"cmi.interactions._count",
 				window.Control.Api.GetValue("cmi.interactions._count"),
@@ -86,7 +90,7 @@
 				event.origin
 			);
 		} else {
-			console.log("Not playing a SCORM Course, start rustici api")
+			console.log("Not playing a SCORM Course, start rustici api");
 			parent.postMessage(
 				{
 					noApi: true,
