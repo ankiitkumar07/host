@@ -12,22 +12,22 @@
 		false
 	);
 	function extractInteractions(event) {
-		console.log(
-			"cmi.interactions._count",
-			window.Control.Api.GetValue("cmi.interactions._count"),
-			"cmi.interactions._children",
-			window.Control.Api.GetValue("cmi.interactions._children"),
-			"cmi.lesson_status",
-			window.Control.Api.GetValue("cmi.lesson_status"),
-			"cmi.completion_status",
-			window.Control.Api.GetValue("cmi.completion_status"),
-			"cmi.success_status",
-			window.Control.Api.GetValue("cmi.success_status"),
-			"cmi.total_time",
-			window.Control.Api.GetValue("cmi.total_time")
-		);
-		const returnObject = {};
 		if (window.Control && window.Control.Api) {
+			console.log(
+				"cmi.interactions._count",
+				window.Control.Api.GetValue("cmi.interactions._count"),
+				"cmi.interactions._children",
+				window.Control.Api.GetValue("cmi.interactions._children"),
+				"cmi.lesson_status",
+				window.Control.Api.GetValue("cmi.lesson_status"),
+				"cmi.completion_status",
+				window.Control.Api.GetValue("cmi.completion_status"),
+				"cmi.success_status",
+				window.Control.Api.GetValue("cmi.success_status"),
+				"cmi.total_time",
+				window.Control.Api.GetValue("cmi.total_time")
+			);
+			const returnObject = {};
 			const cmiInteractionCount = window.Control.Api.GetValue(
 				"cmi.interactions._count"
 			);
@@ -85,13 +85,6 @@
 				},
 				event.origin
 			);
-			// sessionStorage.setItem("progress", JSON.stringify(returnObject));
-			// event.source.postMessage(
-			// 	{
-			// 		returnObject: JSON.stringify(returnObject),
-			// 	},
-			// 	event.origin
-			// );
 		}
 	}
 	rscpCustomizationCompleted();
