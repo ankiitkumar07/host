@@ -85,6 +85,14 @@
 				},
 				event.origin
 			);
+		} else {
+			console.log("Not playing a SCORM Course, start rustici api")
+			parent.postMessage(
+				{
+					noApi: true,
+				},
+				event.origin
+			);
 		}
 	}
 	rscpCustomizationCompleted();
