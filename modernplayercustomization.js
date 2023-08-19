@@ -75,7 +75,7 @@
         );
 
         const correctResponses = [];
-        for (let j = 0; j < interactionCorrectResponseCount; j++) {
+        for (let j = 0; j < correctResponseCount; j++) {
           const correctResponsePattern =
             "cmi.interactions." + i + ".correct_responses." + j + ".pattern";
           console.log(
