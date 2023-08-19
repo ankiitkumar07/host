@@ -54,6 +54,7 @@
       returnObject["cmiSuccessStatus"] = cmiSuccessStatus;
       returnObject["cmiTotalTime"] = cmiTotalTime;
       for (let i = 0; i < cmiInteractionCount; i++) {
+        // create runtime interaction object
         const interactionId = "cmi.interactions." + i + ".id";
         const interactionType = "cmi.interactions." + i + ".type";
         const interactionResult = "cmi.interactions." + i + ".result";
@@ -74,6 +75,7 @@
           interactionCorrectResponseCount
         );
 
+        // Create CorrectResponse object in each interaction
         const correctResponses = [];
         for (let j = 0; j < correctResponseCount; j++) {
           const correctResponsePattern =
@@ -86,6 +88,16 @@
             window.Control.Api.GetValue(correctResponsePattern)
           );
         }
+
+        // Create Objective Interaction in each interaction
+        const objectiveCountCMI = "cmi.objectives._count";
+        const objectiveCount = window.Control.Api.GetValue(objectiveCountCMI);
+        console.log(
+          "OBjectiveCount",
+          objectiveCountCMI,
+          objectiveCount,
+          window.Control.Api.GetValue("cmi.objectives.0")
+        );
 
         returnObject["cmiInteractions"][i] = {
           interactionId: id,
