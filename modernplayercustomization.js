@@ -96,7 +96,9 @@
           "OBjectiveCount",
           objectiveCountCMI,
           objectiveCount,
-          window.Control.Api.GetValue("cmi.objectives.0")
+          window.Control.Api.GetValue("cmi.objectives.0.id"),
+          window.Control.Api.GetValue("cmi.objectives.0.success_status"),
+          window.Control.Api.GetValue("cmi.objectives.0.score.raw")
         );
 
         returnObject["cmiInteractions"][i] = {
