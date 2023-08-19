@@ -73,6 +73,16 @@
         const correctResponseCount = window.Control.Api.GetValue(
           interactionCorrectResponseCount
         );
+
+        const correctResponses = [];
+        for (let j = 0; j < interactionCorrectResponseCount; j++) {
+          correctResponses.push(
+            window.Control.Api.GetValue(
+              "cmi.interactions." + i + ".correct_responses." + j + ".pattern"
+            )
+          );
+        }
+
         returnObject["cmiInteractions"][i] = {
           interactionId: id,
           interactionType: type,
@@ -80,18 +90,19 @@
           description,
           learnerResponse,
           correctResponseCount,
+          correctResponses,
         };
 
-        console.log("Interaction " + (i + 1) + ":");
-        console.log("ID:", id);
-        console.log("Type:", type);
-        console.log("Result:", result);
-        console.log("interactionLearnerResponse:", learnerResponse);
-        console.log("interactionDescription:", description);
-        console.log("interactionCorrectResponseCount:", correctResponseCount);
+        // console.log("Interaction " + (i + 1) + ":");
+        // console.log("ID:", id);
+        // console.log("Type:", type);
+        // console.log("Result:", result);
+        // console.log("interactionLearnerResponse:", learnerResponse);
+        // console.log("interactionDescription:", description);
+        // console.log("interactionCorrectResponseCount:", correctResponseCount);
       }
-      console.log("ReturnObject:", returnObject);
-      console.log("windows:", parent, event);
+      // console.log("ReturnObject:", returnObject);
+      // console.log("windows:", parent, event);
 
       parent.postMessage(
         {
