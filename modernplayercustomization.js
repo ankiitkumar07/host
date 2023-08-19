@@ -76,10 +76,14 @@
 
         const correctResponses = [];
         for (let j = 0; j < interactionCorrectResponseCount; j++) {
+          const correctResponsePattern =
+            "cmi.interactions." + i + ".correct_responses." + j + ".pattern";
+          console.log(
+            correctResponsePattern,
+            window.Control.Api.GetValue(correctResponsePattern)
+          );
           correctResponses.push(
-            window.Control.Api.GetValue(
-              "cmi.interactions." + i + ".correct_responses." + j + ".pattern"
-            )
+            window.Control.Api.GetValue(correctResponsePattern)
           );
         }
 
