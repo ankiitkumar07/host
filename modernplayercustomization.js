@@ -5,9 +5,10 @@
       console.log("iframe getting message, new changes", evet);
       if (evet.data && evet.data == "checkingProgress") {
         extractInteractions(evet);
-      } else {
-        window.Control.TriggerLegacyReturnToLMS();
-      }
+      } 
+      //else {
+        //window.Control.TriggerLegacyReturnToLMS();
+      //}
     },
     false
   );
